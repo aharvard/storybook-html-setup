@@ -1,43 +1,43 @@
-import classNames from 'classnames';
-import './styles.css';
+import classNames from "classnames";
+import "./styles.css";
 
 export default {
-  title: 'HTML Component',
+  title: "HTML Component",
   argTypes: {
     label: {
       control: {
-        type: 'inline-radio',
-        options: ['loading', 'error', 'ready'],
+        type: "inline-radio",
+        options: ["loading", "error", "ready"],
       },
-      description: 'This is the label',
+      description: "This is the label",
       table: {
         defaultValue: {
-          summary: 'loading',
-          detail: 'lorem ipsum set dolar',
+          summary: "loading",
+          detail: "lorem ipsum set dolar",
         },
       },
     },
     isTransparent: {
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
-      description: 'Makes the component transparent',
+      description: "Makes the component transparent",
       table: {
         defaultValue: {
-          summary: 'false',
-          detail: 'Only use this when you need to do something.',
+          summary: "false",
+          detail: "Only use this when you need to do something.",
         },
       },
     },
   },
   args: {
-    label: 'loading',
+    label: "loading",
     isTransparent: false,
   },
   parameters: {
     docs: {
       source: {
-        type: 'dynamic',
+        type: "dynamic",
       },
     },
   },
@@ -45,24 +45,40 @@ export default {
 
 const Template = ({ label, isTransparent }) => {
   return `
-    <div class="${classNames(label, isTransparent === true ? 'isTransparent' : null)}">
-      ${label === 'loading' ? '⏳' : label === 'error' ? '🛑' : label === 'ready' ? '✅' : null}
+    <div class="${classNames(
+      "html-component",
+      label,
+      isTransparent === true ? "isTransparent" : null
+    )}">
+    <span class="icon">
+    ${
+      label === "loading"
+        ? "⏳"
+        : label === "error"
+        ? "🛑"
+        : label === "ready"
+        ? "✅"
+        : null
+    }
+    </span>
+      <span class="label">
       ${label}
+      </span>
     </div>
   `;
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  label: 'loading',
+  label: "loading",
 };
 
 export const Ready = Template.bind({});
 Ready.args = {
-  label: 'ready',
+  label: "ready",
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  label: 'error',
+  label: "error",
 };

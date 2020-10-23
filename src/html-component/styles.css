@@ -1,13 +1,48 @@
+.html-component {
+  padding: 1rem;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  transition: all 2000ms ease;
+  opacity: 1;
+}
+
 .loading {
   background: lightblue;
+}
+
+.loading .label {
+  color: #19445b;
+}
+
+.loading .icon {
+  display: inline-block;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .error {
   background: lightcoral;
 }
 
+.error .label {
+  color: #540800;
+}
+
 .ready {
   background: lightgreen;
+}
+
+.ready .label {
+  color: #0c5712;
 }
 
 .isTransparent {
