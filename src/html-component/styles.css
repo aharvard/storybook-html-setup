@@ -1,0 +1,15 @@
+.loading {
+  background: lightblue;
+}
+
+.error {
+  background: lightcoral;
+}
+
+.ready {
+  background: lightgreen;
+}
+
+.isTransparent {
+  opacity: 0.3;
+}
