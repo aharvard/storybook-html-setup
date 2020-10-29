@@ -1,8 +1,11 @@
+import { useState, useEffect } from "@storybook/client-api";
+
 import classNames from "classnames";
 import "./styles.css";
+// import {closeStatusBar} from "./script.js";
 
 export default {
-  title: "HTML Component",
+  title: "Status Bar",
   argTypes: {
     label: {
       control: {
@@ -34,22 +37,23 @@ export default {
     label: "loading",
     isTransparent: false,
   },
-  parameters: {
-    docs: {
-      source: {
-        type: "dynamic",
-      },
-    },
-  },
 };
 
-const Template = ({ label, isTransparent }) => {
-  return `
+const StatusBar = ({ label, isTransparent }) => {
+  const [count, setCount] = useState(0);
+  const incrementCount = () => setCount(count + 1)
+
+  useEffect(() => {
+    const button = document.querySelector(".ux-status-bar button");
+    button.addEventListener("click", incrementCount);
+  });
+
+  return /*html*/ `
     <div class="${classNames(
-      "html-component",
+      "ux-status-bar",
       label,
       isTransparent === true ? "isTransparent" : null
-    )}">
+    )}"> 
     <span class="icon">
     ${
       label === "loading"
@@ -61,24 +65,26 @@ const Template = ({ label, isTransparent }) => {
         : null
     }
     </span>
-      <span class="label">
+    <span class="label">
       ${label}
-      </span>
+    </span>
+    <button>Click Me</button>
+    <p>You clicked ${count} times</p>
     </div>
   `;
 };
 
-export const Loading = Template.bind({});
+export const Loading = StatusBar.bind({});
 Loading.args = {
   label: "loading",
 };
 
-export const Ready = Template.bind({});
+export const Ready = StatusBar.bind({});
 Ready.args = {
   label: "ready",
 };
 
-export const Error = Template.bind({});
+export const Error = StatusBar.bind({});
 Error.args = {
   label: "error",
 };

@@ -3,9 +3,9 @@ module.exports = {
   stories: ["../**/*.stories.*"],
   logLevel: "debug",
   addons: [
-    "@storybook/addon-controls",
     "@whitespace/storybook-addon-html/register",
     "@storybook/addon-docs",
+    "@storybook/addon-controls",
     "@storybook/addon-a11y",
     "@storybook/addon-backgrounds",
     "@storybook/addon-links",
